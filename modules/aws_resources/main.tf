@@ -1,12 +1,5 @@
-module "aws_vpc" {
-  source     = "../aws_network"
-  vpc_name = "my-vpc"
-  subnet_name = "my-subnet"
-  cidr = "192.168.101.0/24"
-}
-
 resource "aws_network_interface" "ni" {
-  subnet_id   = module.aws_vpc.subnet_id
+  subnet_id   = var.subnet_id
   private_ips = var.addresses
 
   tags = {
